@@ -2,4 +2,4 @@ frontend/node_modules
 .idea
 backend/.gradle
 backend/build
-backend/src/main/resources/application.yaml
+backend/src/main/resources/**
