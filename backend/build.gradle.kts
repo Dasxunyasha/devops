@@ -28,6 +28,7 @@ buildscript {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.flywaydb:flyway-database-postgresql:11.4.0")
     implementation("org.postgresql:postgresql:42.7.5")
     // https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
