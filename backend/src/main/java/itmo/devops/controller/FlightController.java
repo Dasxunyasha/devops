@@ -24,7 +24,7 @@ public class FlightController {
     private final FlightService flightService;
 
     @Operation(summary = "создание полета")
-    @PutMapping(value = "/flight")
+    @PostMapping(value = "/flight")
     public ResponseEntity<?> create(@RequestBody FlightDto flightDto) {
         try {
             flightService.create(flightDto);
@@ -66,7 +66,7 @@ public class FlightController {
 
 
     @Operation(summary = "обновление полета по id")
-    @PostMapping(value = "/flight")
+    @PutMapping(value = "/flight")
     public ResponseEntity<?> update(@RequestBody Flight flight) {
         Flight updatedFlight;
 
