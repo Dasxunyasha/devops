@@ -1,8 +1,6 @@
-FROM gradle:jdk17-corretto
+FROM gradle:8.13-jdk17 AS build
 
-WORKDIR /app
-
-COPY . .
-
-RUN gradle --no-daemon build
-
+ARG APP_NAME=devops
+COPY --chown=gradle:gradle . /home/gradle/src
+WORKDIR /home/gradle/src
+RUN gradle build
