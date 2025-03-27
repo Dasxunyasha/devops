@@ -67,7 +67,7 @@ const CreateModal: React.FC<CreateModalProps> = ({ isOpen, onClose, onSave }) =>
                                 label='Время вылета:'
                                 value={formData.departure}
                                 onChange={handleDateChange("departure")}
-                                renderInput={(params: any) => <TextField {...params} />}
+                                slotProps={{ textField: { fullWidth: true } }}
                             />
                         </div>
                         <div>
@@ -75,7 +75,7 @@ const CreateModal: React.FC<CreateModalProps> = ({ isOpen, onClose, onSave }) =>
                                 label='Время прилета:'
                                 value={formData.arrival}
                                 onChange={handleDateChange("arrival")}
-                                renderInput={(params: any) => <TextField {...params} />}
+                                slotProps={{ textField: { fullWidth: true } }}
                             />
                         </div>
                     </LocalizationProvider>

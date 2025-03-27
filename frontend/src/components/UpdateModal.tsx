@@ -96,13 +96,13 @@ const UpdateModal: React.FC<UpdateModalProps> = ({ isOpen, flight, onClose, onSa
                                 label="Время вылета"
                                 value={formData.departure}
                                 onChange={handleDateChange("departure")}
-                                renderInput={(params: any) => <TextField {...params} fullWidth margin="normal" />}
+                                slotProps={{ textField: { fullWidth: true } }}
                             />
                             <DateTimePicker
                                 label="Время прилета"
                                 value={formData.arrival}
                                 onChange={handleDateChange("arrival")}
-                                renderInput={(params: any) => <TextField {...params} fullWidth margin="normal" />}
+                                slotProps={{ textField: { fullWidth: true } }}
                             />
                         </LocalizationProvider>
                     </div>

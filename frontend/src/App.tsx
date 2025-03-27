@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "@atlaskit/button/new";
+import Button from "@mui/material/Button";
 import useFlights from "./utils/useFlights";
 import FlightTable from "./components/FlightTable";
 import CreateModal from "./components/CreateModal";
@@ -41,7 +41,7 @@ const App: React.FC = () => {
     return (
         <div style={{ padding: 20 }}>
             <h2>Онлайн Табло</h2>
-            <Button appearance="primary" onClick={openCreateModal}>Добавить рейс</Button>
+            <Button variant="contained" color="primary" onClick={openCreateModal}>Добавить рейс</Button>
             <FlightTable flights={flights} onEdit={openEditModal} onDelete={deleteFlight} />
             <CreateModal isOpen={isCreateModalOpen} onClose={closeCreateModal} onSave={handleCreateSave} />
             <UpdateModal isOpen={isEditModalOpen} flight={selectedFlight} onClose={closeEditModal} onSave={handleUpdateSave} />
