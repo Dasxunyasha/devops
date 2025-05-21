@@ -11,4 +11,4 @@ ip_address = "vm-static-ip"
 compute_cloud_name = "devops-vm"
 image_id = "fd80eup4e4h7mmodr9d4"
 
-size = 10
+size = 25
