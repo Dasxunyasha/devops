@@ -18,7 +18,7 @@ spec:
       containers:
         - name: front-app
           image: "1karinav/front-app:{{ .Values.imageTag }}"
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           volumeMounts:
