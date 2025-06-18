@@ -3,6 +3,7 @@ on:
     tags:
       - 'v*.*'
 
+jobs:
   build-and-push-frontend:
     name: build frontend for release
     runs-on: ubuntu-latest
