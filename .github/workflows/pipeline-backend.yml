@@ -48,7 +48,7 @@ jobs:
         working-directory: ./backend/
         run: ./gradlew test --tests "itmo.devops.unit.*" sonar --info
         env:
-          SONAR_TOKEN: ${{ SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   build:
     needs: [ test ]
