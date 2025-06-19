@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    name: devops-app
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: devops
+  project: default
+  source:
+    path: deploy/manifests/devops-chart
+    repoURL: git@github.com:1KarinaV/devops.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  revisionHistoryLimit: 1
