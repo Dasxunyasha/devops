@@ -243,4 +243,3 @@ paths:
             required:
               - error
             type: object
-
