@@ -49,6 +49,8 @@ jobs:
         run: ./gradlew test --tests "itmo.devops.unit.*" sonar --info
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarQube Quality Gate Check
+        uses: SonarSource/sonarqube-quality-gate-action@v1.2.0
 
   build:
     needs: [ test ]
