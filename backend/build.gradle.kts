@@ -4,6 +4,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.7"
     id("org.flywaydb.flyway") version "11.4.0"
     id("org.sonarqube") version "6.2.0.5505"
+    jacoco
 }
 
 group = "itmo"
@@ -50,6 +51,17 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+tasks.withType<JacocoReport> {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+}
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport)
+}
+
 flyway {
     driver = "org.postgresql.Driver"
     url = System.getenv("DATASOURCE_URL")
@@ -64,5 +76,9 @@ sonar {
         property("sonar.organization", "dasxunyasha")
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.token", System.getenv("SONAR_TOKEN"))
+    }
+
+    jacoco {
+        toolVersion = "0.8.8"
     }
 }
