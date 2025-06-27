@@ -4,8 +4,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/Dasxunyasha/devops'
-
                 sh 'chmod +x ./gradlew'
                 sh './gradlew clean build -x test'
             }
