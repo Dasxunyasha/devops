@@ -21,5 +21,15 @@ pipeline {
                 archiveArtifacts artifacts: 'backend/build/reports/jacoco/test/html/**', fingerprint: true
             }
         }
+
+        stage('Publish Coverage Report') {
+            steps {
+                publishHTML(target: [
+                    reportDir: 'backend/build/reports/jacoco/test/html',
+                    reportFiles: 'index.html',
+                    reportName: 'JaCoCo Coverage Report'
+                ])
+            }
+        }
     }
 }
