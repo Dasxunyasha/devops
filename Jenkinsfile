@@ -2,16 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Dasxunyasha/devops'
-            }
-        }
-
         stage('Build & Test') {
             steps {
                 dir('backend') {
-                    sh './gradlew clean test jacocoTestReport'
+                    sh './gradlew clean build jacocoTestReport'
                 }
             }
         }
