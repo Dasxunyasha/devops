@@ -5,15 +5,15 @@ pipeline {
         stage('Build') {
             steps {
                 dir('backend') {
-                sh 'chmod +x ./gradlew'
-                sh './gradlew clean build -x test'
+                    sh 'chmod +x ./gradlew'
+                    sh './gradlew clean build'
                 }
             }
 
             post {
                 success {
-                    junit 'build/test-results/test/TEST-*.xml'
-                    archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
+                    junit 'backend/build/test-results/test/TEST-*.xml'
+                    archiveArtifacts artifacts: 'backend/build/libs/*.jar', fingerprint: true
                 }
             }
         }
