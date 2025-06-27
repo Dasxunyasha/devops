@@ -2,24 +2,39 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Dasxunyasha/devops'
+            }
+        }
+
+        stage('Build & Test') {
             steps {
                 dir('backend') {
-                    sh 'chmod +x ./gradlew'
-                    sh './gradlew clean build'
+                    sh './gradlew clean test jacocoTestReport'
                 }
             }
+        }
 
-            post {
-                success {
-                    junit 'backend/build/test-results/test/TEST-*.xml'
-                    archiveArtifacts artifacts: 'backend/build/libs/*.jar', fingerprint: true
+        stage('Publish Test Results') {
+            steps {
+                junit 'backend/build/test-results/test/TEST-*.xml'
+            }
+        }
 
-                    jacoco execPattern: 'backend/build/jacoco/test.exec',
-                           classPattern: 'backend/build/classes/java/main',
-                           sourcePattern: 'backend/src/main/java',
-                           exclusionPattern: 'backend/src/main/DevopsApplication.class'
-                }
+        stage('Publish Jacoco Report') {
+            steps {
+                jacoco(
+                    execPattern: 'backend/build/jacoco/test.exec',
+                    classPattern: 'backend/build/classes/java/main',
+                    sourcePattern: 'backend/src/main/java'
+                )
+            }
+        }
+
+        stage('Archive Jacoco HTML Report') {
+            steps {
+                archiveArtifacts artifacts: 'backend/build/reports/jacoco/test/html/**', fingerprint: true
             }
         }
     }
