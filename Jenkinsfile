@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                dir('backend') {
                 sh 'chmod +x ./gradlew'
                 sh './gradlew clean build -x test'
+                }
             }
 
             post {
