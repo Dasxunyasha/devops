@@ -16,17 +16,7 @@ pipeline {
             }
         }
 
-        stage('Publish Jacoco Report') {
-            steps {
-                jacoco(
-                    execPattern: 'backend/build/jacoco/test.exec',
-                    classPattern: 'backend/build/classes/java/main',
-                    sourcePattern: 'backend/src/main/java'
-                )
-            }
-        }
-
-        stage('Archive Jacoco HTML Report') {
+        stage('Archive Jacoco Report') {
             steps {
                 archiveArtifacts artifacts: 'backend/build/reports/jacoco/test/html/**', fingerprint: true
             }
